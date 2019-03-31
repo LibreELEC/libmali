@@ -33,12 +33,12 @@ extern "C" {
 ** used to make the header, and the header can be found at
 **   http://www.khronos.org/registry/egl
 **
-** Khronos $Git commit SHA1: 726475c203 $ on $Git commit date: 2018-10-03 23:51:49 -0700 $
+** Khronos $Git commit SHA1: 9d1b9028d2 $ on $Git commit date: 2019-03-21 10:38:41 +0530 $
 */
 
 #include <EGL/eglplatform.h>
 
-#define EGL_EGLEXT_VERSION 20181204
+#define EGL_EGLEXT_VERSION 20190321
 
 /* Generated C header for:
  * API: egl
@@ -461,6 +461,10 @@ typedef EGLint (EGLAPIENTRYP PFNEGLWAITSYNCKHRPROC) (EGLDisplay dpy, EGLSyncKHR 
 EGLAPI EGLint EGLAPIENTRY eglWaitSyncKHR (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags);
 #endif
 #endif /* EGL_KHR_wait_sync */
+
+#ifndef EGL_ANDROID_GLES_layers
+#define EGL_ANDROID_GLES_layers 1
+#endif /* EGL_ANDROID_GLES_layers */
 
 #ifndef EGL_ANDROID_blob_cache
 #define EGL_ANDROID_blob_cache 1
@@ -1031,6 +1035,16 @@ EGLAPI EGLBoolean EGLAPIENTRY eglExportDMABUFImageMESA (EGLDisplay dpy, EGLImage
 #define EGL_PLATFORM_SURFACELESS_MESA     0x31DD
 #endif /* EGL_MESA_platform_surfaceless */
 
+#ifndef EGL_MESA_query_driver
+#define EGL_MESA_query_driver 1
+typedef char *(EGLAPIENTRYP PFNEGLGETDISPLAYDRIVERCONFIGPROC) (EGLDisplay dpy);
+typedef const char *(EGLAPIENTRYP PFNEGLGETDISPLAYDRIVERNAMEPROC) (EGLDisplay dpy);
+#ifdef EGL_EGLEXT_PROTOTYPES
+EGLAPI char *EGLAPIENTRY eglGetDisplayDriverConfig (EGLDisplay dpy);
+EGLAPI const char *EGLAPIENTRY eglGetDisplayDriverName (EGLDisplay dpy);
+#endif
+#endif /* EGL_MESA_query_driver */
+
 #ifndef EGL_NOK_swap_region
 #define EGL_NOK_swap_region 1
 typedef EGLBoolean (EGLAPIENTRYP PFNEGLSWAPBUFFERSREGIONNOKPROC) (EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint *rects);
@@ -1118,6 +1132,11 @@ typedef EGLBoolean (EGLAPIENTRYP PFNEGLPOSTSUBBUFFERNVPROC) (EGLDisplay dpy, EGL
 EGLAPI EGLBoolean EGLAPIENTRY eglPostSubBufferNV (EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height);
 #endif
 #endif /* EGL_NV_post_sub_buffer */
+
+#ifndef EGL_NV_quadruple_buffer
+#define EGL_NV_quadruple_buffer 1
+#define EGL_QUADRUPLE_BUFFER_NV           0x3231
+#endif /* EGL_NV_quadruple_buffer */
 
 #ifndef EGL_NV_robustness_video_memory_purge
 #define EGL_NV_robustness_video_memory_purge 1
@@ -1306,6 +1325,11 @@ EGLAPI EGLuint64NV EGLAPIENTRY eglGetSystemTimeNV (void);
 #endif
 #endif /* KHRONOS_SUPPORT_INT64 */
 #endif /* EGL_NV_system_time */
+
+#ifndef EGL_NV_triple_buffer
+#define EGL_NV_triple_buffer 1
+#define EGL_TRIPLE_BUFFER_NV              0x3230
+#endif /* EGL_NV_triple_buffer */
 
 #ifndef EGL_TIZEN_image_native_buffer
 #define EGL_TIZEN_image_native_buffer 1

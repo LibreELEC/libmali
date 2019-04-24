@@ -38,10 +38,19 @@ configure_file(pkgconfig/egl.pc.cmake egl.pc @ONLY)
 configure_file(pkgconfig/gbm.pc.cmake gbm.pc @ONLY)
 configure_file(pkgconfig/glesv2.pc.cmake glesv2.pc @ONLY)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/egl.pc ${CMAKE_CURRENT_BINARY_DIR}/gbm.pc ${CMAKE_CURRENT_BINARY_DIR}/glesv2.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/egl.pc
+              ${CMAKE_CURRENT_BINARY_DIR}/gbm.pc
+              ${CMAKE_CURRENT_BINARY_DIR}/glesv2.pc
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
-install(FILES include/gbm.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(DIRECTORY include/EGL include/GLES include/GLES2 include/KHR DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES include/gbm.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(DIRECTORY include/EGL
+                  include/GLES
+                  include/GLES2
+                  include/KHR
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 if(DEFINED MALI_GLES3)
     install(DIRECTORY include/GLES3 DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

@@ -54,7 +54,7 @@ macro(install_symlink filepath sympath)
 endmacro(install_symlink)
 
 if(DEFINED MALI_FILE)
-    install(FILES lib/${MALI_ARCH}/${MALI_FILE} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    install(PROGRAMS lib/${MALI_ARCH}/${MALI_FILE} DESTINATION ${CMAKE_INSTALL_LIBDIR})
     install_symlink(${MALI_FILE} ${CMAKE_INSTALL_LIBDIR}/libmali.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libmali.so.0)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libMali.so)

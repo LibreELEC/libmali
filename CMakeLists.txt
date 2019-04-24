@@ -36,10 +36,12 @@ endif()
 
 configure_file(pkgconfig/egl.pc.cmake egl.pc @ONLY)
 configure_file(pkgconfig/gbm.pc.cmake gbm.pc @ONLY)
+configure_file(pkgconfig/glesv1_cm.pc.cmake glesv1_cm.pc @ONLY)
 configure_file(pkgconfig/glesv2.pc.cmake glesv2.pc @ONLY)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/egl.pc
               ${CMAKE_CURRENT_BINARY_DIR}/gbm.pc
+              ${CMAKE_CURRENT_BINARY_DIR}/glesv1_cm.pc
               ${CMAKE_CURRENT_BINARY_DIR}/glesv2.pc
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
@@ -68,7 +70,7 @@ if(DEFINED MALI_FILE)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libMali.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libEGL.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libEGL.so.1)
-    install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLES_CM.so.1)
+    install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLESv1_CM.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLESv1_CM.so.1)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLESv2.so)
     install_symlink(libmali.so ${CMAKE_INSTALL_LIBDIR}/libGLESv2.so.2)
